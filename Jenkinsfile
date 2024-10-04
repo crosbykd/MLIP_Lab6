@@ -15,11 +15,17 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # TODO fill out the path to conda here
-                # sudo /PATH/TO/CONDA init
+                # Create new venv
+                python3 -m venv mlip
+
+                # Activate venv
+                source mlip/bin/activate
+
+                # Install dependencies with pip
+                pip install pytest pandas scikit-learn
 
                 # TODO Complete the command to run pytest
-                # sudo /PATH/TO/CONDA run -n <Envinronment Name> <Command you want to run>
+                pytest
 
                 echo 'pytest not runned'
                 exit 1 #comment this line after implementing Jenkinsfile
